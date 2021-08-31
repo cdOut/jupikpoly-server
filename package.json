@@ -1,0 +1,28 @@
+{
+  "name": "jupikpoly",
+  "version": "1.0.0",
+  "description": "Monopoly-type game using Node.js, Socket.io and Three.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdOut/jupikpoly.git"
+  },
+  "keywords": [
+    "Boardgame",
+    "Money",
+    "Jupik"
+  ],
+  "author": "codeOut, Warus15, xRamzes, m0sqed, Codefident",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/cdOut/jupikpoly/issues"
+  },
+  "homepage": "https://github.com/cdOut/jupikpoly#readme",
+  "dependencies": {
+    "socket.io": "^4.2.0",
+    "three": "^0.132.2"
+  }
+}
