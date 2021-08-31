@@ -1,12 +1,16 @@
 const express = require("express");
 const socket = require("socket.io");
+
+//Additional consts
+const cors = require("cors");
+const colors = require("colors");
 const path = require("path");
 
+//
 const app = express();
 const port = 3000;
 
-//Additional consts
-const colors = require("colors");
+app.use(cors());
 
 //Requests
 app.get("/", (req, res) => {
@@ -18,6 +22,11 @@ const server = app.listen(port, () => {
   console.log(`Server running at http://127.0.0.1:${port}/`.green);
 });
 
-const io = socket(server);
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:5050", //client address
+    methods: ["GET", "POST"]
+  }
+});
 
 io.on("connection", socket => {});
