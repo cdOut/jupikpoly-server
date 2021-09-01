@@ -1,25 +1,43 @@
+const Settings = require("./Settings");
 const GameStates = require("./enums/GameStates");
+const ServerRoles = require("./enums/ServerRoles");
+const Player = require("./Player");
 
 class GameRoom {
-  constructor() {
-    this.idLength = 30;
-    this.gameID = this.generateID();
+  constructor(creatorNick) {
+    this.idLength = Settings.IDlen;
+    this.gameID = Settings.generateID();
     this.gameState = GameStates.LOBBY;
+
+    this.playersInRoom = new Array();
+    playersInRoom.push(
+      new Player(creatorNick, this.playersInRoom.length, ServerRoles.ADMIN)
+    );
   }
 
-  generateID() {
-    let result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  isPlayerInRoom(nick) {
+    this.playersInRoom.forEach(player => {
+      if (player.nick == nick) return true;
+    });
+    return false;
+  }
 
-    for (let i = 0; i < this.idLength; i++) {
-      result += characters.charAt(
-        Math.floor(Math.random() * characters.length)
+  addPlayer(nick) {
+    if (this.searchForPlayer(nick))
+      playersInRoom.push(
+        new Player(nick, this.playersInRoom.length, ServerRoles.PLAYER)
       );
+    else {
+      //TODO: inform user that there is player with such a nick !
     }
+  }
 
-    console.log(result);
-    return result;
+  removePlayer(nick) {
+    this.playersInRoom.forEach(player => {
+      if (player.nick == nick) {
+        this.playersInRoom.splice(player.id, 1)
+      }
+    });
   }
 }
 

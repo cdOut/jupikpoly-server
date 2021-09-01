@@ -8,7 +8,6 @@ const path = require("path");
 
 //Imports
 const GameRoom = require("./src/GameRoom");
-const Player = require("./src/Player");
 
 //Test code
 let gameRoom = new GameRoom();

@@ -1,5 +1,6 @@
 class Player {
-  constructor(nick, id) {
+  constructor(nick, id, serverRole) {
+    this.serverRole;
     this.nick = nick;
     this.id = id;
     this.money = 1500;
@@ -7,7 +8,6 @@ class Player {
     this.x;
     this.y;
   }
-
 }
 
 module.export = Player;
