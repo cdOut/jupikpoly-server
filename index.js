@@ -6,7 +6,15 @@ const cors = require("cors");
 const colors = require("colors");
 const path = require("path");
 
+//Imports
+const GameRoom = require("./src/GameRoom");
+const Player = require("./src/Player");
+
+//Test code
+let gameRoom = new GameRoom();
 //
+
+//Settingss
 const app = express();
 const port = 3000;
 
@@ -24,7 +32,7 @@ const server = app.listen(port, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:5050", //client address
+    origin: "http://localhost:5500", //client address
     methods: ["GET", "POST"]
   }
 });
