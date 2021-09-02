@@ -1,5 +1,5 @@
 class Settings {
-  static IDlen = 30;
+  static IDlen = 20;
 
   static generateID() {
     let result = "";

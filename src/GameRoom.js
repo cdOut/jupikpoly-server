@@ -10,7 +10,7 @@ class GameRoom {
     this.gameState = GameStates.LOBBY;
 
     this.playersInRoom = new Array();
-    playersInRoom.push(
+    this.playersInRoom.push(
       new Player(creatorNick, this.playersInRoom.length, ServerRoles.ADMIN)
     );
   }
@@ -35,7 +35,7 @@ class GameRoom {
   removePlayer(nick) {
     this.playersInRoom.forEach(player => {
       if (player.nick == nick) {
-        this.playersInRoom.splice(player.id, 1)
+        this.playersInRoom.splice(player.id, 1);
       }
     });
   }
