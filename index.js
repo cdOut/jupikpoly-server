@@ -31,9 +31,23 @@ const server = app.listen(port, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:5500", //client address
+    origin: "http://127.0.0.1:5500", //client address
     methods: ["GET", "POST"]
   }
 });
 
-io.on("connection", socket => {});
+io.on("connection", socket => {
+  console.log(`${socket.id} connected`.blue)
+
+  socket.on("createLobby", () => {
+    console.log('cr lb')
+  })
+
+  socket.on("joinLobby", lobbyId => {
+    console.log(lobbyId)
+  })
+
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} disconnected`.red)
+  })
+});
