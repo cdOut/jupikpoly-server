@@ -8,6 +8,7 @@ const path = require("path");
 
 //Imports
 const GameRoom = require("./src/GameRoom");
+const Player = require("./src/Player");
 
 //Test code
 let gameRoom = new GameRoom();
@@ -39,12 +40,15 @@ const io = socket(server, {
 io.on("connection", (socket) => {
   console.log(`${socket.id} connected`.blue);
 
-  socket.on("createLobby", () => {
-    console.log("cr lb");
+  socket.on("createLobby", (data) => {
+    console.log(data.nickname);
+    const player = new Player(data.nickname, socket.id, 0);
   });
 
-  socket.on("joinLobby", (lobbyId) => {
-    console.log(lobbyId);
+  socket.on("joinLobby", (data) => {
+    console.log(data.nickname);
+    console.log(data.lobbyId);
+    const player = new Player(data.nickname, socket.id, 0);
   });
 
   socket.on("disconnect", () => {
